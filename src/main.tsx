@@ -1,7 +1,7 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import './index.less'
-import 'antd/dist/antd.css'
+import 'antd/dist/antd.less'
 import RouteDom from '@/routes'
 
 ReactDOM.render(

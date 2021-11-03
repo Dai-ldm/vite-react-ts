@@ -4,15 +4,19 @@
   "scripts": {
     "dev": "vite",
     "start": "npm run dev",
-    "build": "node testTime.js && tsc && vite build && node testTime.js",
-    "serve": "vite preview"
+    "build": "tsc && vite build",
+    "serve": "vite preview",
+    "analyze": "npm run build && source-map-explorer build/static/*.*.js"
   },
   "dependencies": {
     "antd": "^4.16.13",
+    "graphql": "^16.0.1",
+    "mobx": "^6.3.6",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-router": "^5.2.1",
     "react-router-dom": "^5.3.0",
+    "source-map-explorer": "^2.5.2",
     "vite-plugin-react-svg": "^0.2.0",
     "zustand": "^3.6.2"
   },
@@ -20,6 +24,7 @@
     "@types/react": "^17.0.0",
     "@types/react-dom": "^17.0.0",
     "@types/react-router-dom": "^5.3.2",
+    "@vitejs/plugin-legacy": "^1.6.2",
     "@vitejs/plugin-react": "^1.0.0",
     "babel-eslint": "^10.1.0",
     "envify": "^4.1.0",
