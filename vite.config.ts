@@ -3,6 +3,7 @@ import react from '@vitejs/plugin-react'
 import {resolve} from 'path'
 import reactSvgPlugin from 'vite-plugin-react-svg'
 import legacy from '@vitejs/plugin-legacy'
+import globalStyleJSON from "./src/global/style.json";
 // https://vitejs.dev/config/
 export default defineConfig(({ command, mode })=>{
     return {
@@ -55,9 +56,7 @@ export default defineConfig(({ command, mode })=>{
         preprocessorOptions:{
           less:{
             javascriptEnabled: true,
-            modifyVars: {
-              "primary-color": "#00ff00",
-            }
+            modifyVars: globalStyleJSON
           }
         }
       },
