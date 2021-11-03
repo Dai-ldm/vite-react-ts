@@ -33,7 +33,10 @@ export default defineConfig(({ command, mode })=>{
         assetsInlineLimit:500,
         chunkSizeWarningLimit:500,
         manifest:true,
-        sourcemap:true, //是否开启map，生产环境最好关闭
+        sourcemap:false, //是否开启map，生产环境最好关闭
+        emptyOutDir:true, //重新构建的时候清空原产物
+        brotliSize:false, //构建后的压缩报错
+        minify: 'esbuild',//作用？
         rollupOptions:{
           output:{
             manualChunks(id){
@@ -41,12 +44,19 @@ export default defineConfig(({ command, mode })=>{
                 const fileName = 'chunk-'+id.toString().split('node_modules/')[1].split('/')[0].toString()
                 return fileName
               }
-            }
+            },
+            // entryFileNames: '[name]-[hash].[ext]',
+            // chunkFileNames: 'assets/js/[name]-[hash].js',
+            // assetFileNames: 'assets/[ext]/[name]-[hash][extname]'
           }
+        },
+        // 依赖优化项
+        optimizeDeps: {
+          entries: "",
+          include: [],
+          exclude: [],
+          keepNames: false, //  true 重命名符号避免冲突
         }
-      },
-      json:{
-        stringify:true //压缩json文件
       },
       css:{
         modules:{
